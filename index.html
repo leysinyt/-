@@ -43,6 +43,7 @@
       border-radius: 8px;
       resize: none;
       font-family: monospace;
+      display: none; /* Скрыто по умолчанию */
     }
     input[type="password"] {
       padding: 12px;
@@ -176,7 +177,8 @@
         usedPasswords.push(input);
         localStorage.setItem('usedPasswords', JSON.stringify(usedPasswords));
 
-        document.getElementById("content").style.display = "block";
+        document.getElementById("content").style.display = "block"; // Показываем контент
+        document.getElementById("secretText").style.display = "block"; // Показываем секретный текст
         startTimer(1800); // 30 минут
       } else {
         alert("Неверный пароль");
