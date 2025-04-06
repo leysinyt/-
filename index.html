@@ -1,251 +1,90 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Гайд Обхода Проверки</title>
-    <style>
-        /* Общий стиль для всего сайта */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0d0d0d;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            overflow: hidden;
-            background: linear-gradient(135deg, #1d1d1d, #333);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Гайд Обхода Проверки</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        h1 {
-            font-size: 3em;
-            margin-top: 20px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            color: #0dffb3;
-            text-shadow: 0 0 10px #00ff99;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
 
-        h3 {
-            margin-top: 20px;
-            font-size: 1.8em;
-            color: #00ffcc;
-            text-shadow: 0 0 5px #00ff99;
-        }
+    .container {
+      text-align: center;
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+    }
 
-        p, ul {
-            font-size: 1.1em;
-            margin: 10px 0;
-            padding: 0 20px;
-            color: #a8a8a8;
-        }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #0ff;
+    }
 
-        ul {
-            list-style: none;
-        }
+    .input-group {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 10px;
+    }
 
-        li {
-            margin: 5px 0;
-        }
+    input[type="password"] {
+      padding: 10px;
+      font-size: 1rem;
+      border: 2px solid #0ff;
+      background-color: #000;
+      color: #0ff;
+      border-radius: 5px;
+      width: 100%;
+      max-width: 250px;
+    }
 
-        a {
-            color: #1e90ff;
-            text-decoration: none;
-        }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #00ffc3;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
+    button:hover {
+      background-color: #00cfa3;
+    }
 
-        .password-input {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            max-width: 400px;
-            position: relative;
-        }
+    @media (max-width: 500px) {
+      .input-group {
+        flex-direction: column;
+      }
 
-        .password-input input {
-            padding: 10px;
-            width: 80%;
-            border: 2px solid #00ff99;
-            background-color: #222;
-            color: #fff;
-            font-size: 1.2em;
-            border-radius: 5px;
-            box-shadow: 0 0 5px #00ff99;
-        }
-
-        .password-input button {
-            padding: 10px 15px;
-            margin-left: 10px;
-            background-color: #00ff99;
-            border: none;
-            color: white;
-            font-size: 1.2em;
-            cursor: pointer;
-            border-radius: 5px;
-            box-shadow: 0 0 5px #00ff99;
-        }
-
-        .password-input button:hover {
-            background-color: #00cc80;
-        }
-
-        .content {
-            display: none;
-            background-color: #333;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 255, 153, 0.8);
-        }
-
-        .content h4 {
-            font-size: 1.5em;
-            color: #00ff99;
-        }
-
-        /* Эффекты "нейросети" для фона */
-        .neural-network-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.abc.net.au/cm/rimage/10980498-16x9-xlarge.jpg?v=2') center/cover;
-            filter: blur(8px);
-            z-index: -1;
-            animation: pulse 10s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                filter: blur(8px);
-            }
-            50% {
-                filter: blur(4px);
-            }
-            100% {
-                filter: blur(8px);
-            }
-        }
-
-        /* Медиа-запросы для адаптивности */
-        @media screen and (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            h3 {
-                font-size: 1.5em;
-            }
-
-            .password-input input {
-                width: 70%;
-            }
-
-            .password-input button {
-                font-size: 1em;
-            }
-
-            p, ul {
-                font-size: 0.9em;
-                padding: 0 10px;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            h1 {
-                font-size: 1.5em;
-            }
-
-            .password-input input {
-                width: 60%;
-            }
-
-            .password-input button {
-                font-size: 0.9em;
-            }
-
-            p, ul {
-                font-size: 0.8em;
-                padding: 0 5px;
-            }
-        }
-    </style>
+      input[type="password"], button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <div class="neural-network-background"></div>
-
+  <div class="container">
     <h1>Гайд Обхода Проверки</h1>
-
-    <div class="password-input">
-        <input type="text" id="password" placeholder="Введите пароль">
-        <button onclick="checkPassword()">Войти</button>
+    <div class="input-group">
+      <input type="password" placeholder="Введите пароль">
+      <button>Войти</button>
     </div>
-
-    <div id="content" class="content">
-        <h3>Привет! Сейчас я тебе расскажу как ты сможешь обходить любые проверки на всех серверах Minecraft!</h3>
-        <p>Мы будем использовать 2 прокси сервера, которые будут на 2 устройствах (телефон и компьютер).</p>
-        <p>Приложения, которыми будем пользоваться:</p>
-        <ul>
-            <li><strong>Xameleon Client</strong> (ПК)</li>
-            <li><strong>Чистый Pojav Launcher</strong> (ТЕЛЕФОН)</li>
-        </ul>
-
-        <h4>1 Этап (ПК):</h4>
-        <p>1. Скачивание Xameleon Client:</p>
-        <a href="https://workupload.com/file/eCpqAeN8yDE" target="_blank">Скачать Xameleon Client</a>
-        <p>2. Скачивание Node JS:</p>
-        <a href="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" target="_blank">Скачать Node JS</a>
-        <p>3. Открываем папку Xameleon, затем папку <strong>files</strong></p>
-        <p>4. Запускаем <strong>server.exe</strong> и ждём, пока запустится сервер.</p>
-        <p>5. Запускаем <strong>xameleon.exe</strong> и ждём, пока откроется меню.</p>
-        <p>6. Вводим свой ник.</p>
-        <p>7. Выбираем версию.</p>
-        <p>8. Если играете на Funtime, включаем функцию обхода, если нет — выключаем.</p>
-        <p>9. Заходим в статус.</p>
-        <p>10. Нажимаем на подключение 1 клиента (управление).</p>
-        <p>11. Подключаемся с читами по IP: <strong>0.0.0.0:25565</strong></p>
-
-        <h4>2 Этап (Телефон):</h4>
-        <p>1. Скачиваете на телефон PojavLauncher.</p>
-        <p>2. Заходите в PojavLauncher и выбираете серверы.</p>
-        <p>3. Запоминаем IP для 2 аккаунта (статус), который в статусе "Ожидание".</p>
-        <p>4. Нажимаем кнопку <strong>Добавить сервер</strong> и вводим запомненный IP.</p>
-        <p>5. Когда начнётся проверка на ПК, запускаете PojavLauncher и заходите через 2-й IP, который у вас в статусе "Ожидание".</p>
-
-        <p>Вот и всё! Удачи на проверке!</p>
-    </div>
-
-    <script>
-        let usedPasswords = new Set(); // Храним использованные пароли
-
-        const validPasswords = ["3hT7kP2x", "Jx8nQ1bZ", "Y7gWc9qM", "aP4kZt3W", "Dp9rNm8V", "Lq5sHy6c", "Tz3nCv7A", "wK1eUb4J", "Mf2tDx9Y", "Nk6gLa3R", "Qw4zTe7N", "Ez7kRp1M", "Bt2nXy5Q", "Jc8vUa6L", "Zo9qBm2D", "Rk3yWz4F", "Pn5hGt7S", "Yv1mQo8C", "Wf6cJa3K", "Ux2nLp9V", "Hq7zKe4N", "Sn4yDw6M", "Gm9vTr1B", "Aj5kPo8Z", "Cv3nQy7E", "Mx8gLb2K", "Et1hZw9R", "Vw6pNo3T", "Qc7kAm5L", "Ys9vUt2J", "Nz3hGr4Y", "Ka5nXc8P", "Tp2qWm7D", "Lf1zRo9V", "Xy6cJa3E", "Wu7mTq5K", "Br4nXy8L", "Gk9vPz2C", "Jp1qMo6T", "Sy5nUa7F", "Cv8kLr3N", "Dt2zQw9M", "Ex6yNp4B", "Fm7vJa1K", "Zn3hWo8T", "Qp5kGr2L", "Uk9nYc7V", "Ro4zTm1E", "Yx8pNa6C", "Wf2vLo3K", "Gn7kPw9R", "Ma1nXq4T", "Jc5zVo6B", "Lx3yWt8M", "Et9nUa2K", "Br7vQm5L", "Xo6kNp1C", "Sp3zTr9Y", "Qn8wLo4V", "Yg1xMu6T", "Kv5nPa7B", "Fz2rNc3J", "Lt9kWo8C", "Rm4yTu1K", "Dp7nXq5V", "Aj3vLb6N", "Uw8pNo2Y", "Cz6kQw9M", "Ym1zRo4B", "Vn5yTa3C", "Gt9kWm7L", "Nq2pXa8J", "Rx3vUb5K", "Hp6nYo1T", "Zm7zNc4C", "Yf9kTr2B", "Qa1nXp6L", "Wo8yVm3K", "Ec5zLo7T", "Sn2pQw9M", "Mk4vNa1C", "Bt7kRo6J", "Lx9yTp2V", "Ju3nXq5B", "Gf8pWm1K", "Yr2kNo7L", "Aw5zUc3T", "Dn9yQp6V", "Xm1vTa4B", "Rq6nLo8C", "Zt3kWm9J", "Ep4yNb2K", "Vs7nXq1T", "Lm8pTo5V", "Qc9kUa6B", "Ho2zNp3L", "Jx5vWo7C", "Ft1nXq8K", "Yb6pTr4M", "Rm9yLo2V", "Xn2vTa4B"];
-
-        function checkPassword() {
-            const passwordInput = document.getElementById('password').value;
-
-            if (usedPasswords.has(passwordInput)) {
-                alert("Этот пароль уже был использован!");
-                return;
-            }
-
-            if (validPasswords.includes(passwordInput)) {
-                usedPasswords.add(passwordInput);
-                document.getElementById('content').style.display = 'block';
-            } else {
-                alert("Неверный пароль!");
-            }
-        }
-    </script>
-
+  </div>
 </body>
 </html>
