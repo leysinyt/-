@@ -1,204 +1,199 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Гайд обхода проверки</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
-      color: #00ffcc;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-      overflow: hidden;
-    }
-    .container {
-      background: rgba(20, 20, 20, 0.95);
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 30px #00ffcc55;
-      max-width: 500px;
-      width: 90%;
-      text-align: center;
-    }
-    h2 {
-      color: #00ffff;
-      margin-bottom: 15px;
-      text-shadow: 0 0 10px #00ffff88;
-    }
-    textarea {
-      width: 100%;
-      height: 200px;
-      margin-top: 20px;
-      background: #0d0d0d;
-      color: #00ffcc;
-      border: 2px solid #00ffcc;
-      padding: 10px;
-      border-radius: 8px;
-      resize: none;
-      font-family: monospace;
-      display: none; /* Скрыто по умолчанию */
-    }
-    input[type="password"] {
-      padding: 12px;
-      width: 100%;
-      margin-top: 15px;
-      border-radius: 8px;
-      border: 2px solid #00ffcc;
-      background: #0d0d0d;
-      color: #00ffcc;
-      font-size: 16px;
-      box-sizing: border-box;
-    }
-    button {
-      padding: 12px 24px;
-      background: #00ffcc;
-      color: #0d0d0d;
-      font-weight: bold;
-      border: none;
-      margin-top: 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background: #00ffaa;
-    }
-    #countdown {
-      margin-top: 15px;
-      font-size: 16px;
-      color: #ffffff;
-    }
-    .guide-text {
-      text-align: left;
-      color: #00ffcc;
-      font-size: 14px;
-      line-height: 1.5;
-      margin-top: 20px;
-    }
-    @media (max-width: 600px) {
-      .container {
-        padding: 20px;
-      }
-      textarea {
-        height: 150px;
-      }
-      input[type="password"] {
-        width: 90%;
-        margin: 0 auto;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гайд Обхода Проверки</title>
+    <style>
+        /* Общий стиль для всего сайта */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 2.5em;
+        }
+
+        h3 {
+            margin-top: 20px;
+            font-size: 1.8em;
+        }
+
+        p, ul {
+            font-size: 1em;
+            margin: 10px 0;
+            padding: 0 20px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .password-input {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .password-input input {
+            padding: 10px;
+            width: 80%;
+            border: 2px solid #1e90ff;
+            background-color: #222;
+            color: #fff;
+            font-size: 1.2em;
+            border-radius: 5px;
+        }
+
+        .password-input button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            background-color: #1e90ff;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .password-input button:hover {
+            background-color: #005bb5;
+        }
+
+        /* Стили для отображения контента после ввода пароля */
+        .content {
+            display: none;
+            background-color: #333;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        /* Медиа-запросы для адаптивности */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            h3 {
+                font-size: 1.5em;
+            }
+
+            .password-input input {
+                width: 70%;
+            }
+
+            .password-input button {
+                font-size: 1em;
+            }
+
+            p, ul {
+                font-size: 0.9em;
+                padding: 0 10px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .password-input input {
+                width: 60%;
+            }
+
+            .password-input button {
+                font-size: 0.9em;
+            }
+
+            p, ul {
+                font-size: 0.8em;
+                padding: 0 5px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h2>🔒 Гайд обхода проверки</h2>
-    <input type="password" id="password" placeholder="Введите пароль..." />
-    <button onclick="checkPassword()">Открыть</button>
-    <div id="content" style="display:none">
-      <textarea readonly id="secretText">Вот ваш защищённый текст. Никому не передавайте.</textarea>
-      <div id="countdown"></div>
+
+    <h1>Гайд Обхода Проверки</h1>
+
+    <div class="password-input">
+        <input type="text" id="password" placeholder="Введите пароль">
+        <button onclick="checkPassword()">Войти</button>
     </div>
-    <div class="guide-text">
-      <h3>Привет! Сейчас я тебе расскажу как ты сможешь обходить любые проверки на всех серверах Minecraft!</h3>
-      <p>Мы будем использовать 2 прокси сервера, которые будут на 2 устройствах (телефон и компьютер).</p>
-      <p>Приложения, которыми будем пользоваться:</p>
-      <ul>
-        <li><strong>Xameleon Client</strong> (ПК)</li>
-        <li><strong>Чистый Pojav Launcher</strong> (ТЕЛЕФОН)</li>
-      </ul>
 
-      <h4>1 Этап (ПК):</h4>
-      <p>1. Скачивание Xameleon Client:</p>
-      <a href="https://workupload.com/file/eCpqAeN8yDE" target="_blank">Скачать Xameleon Client</a>
-      <p>2. Скачивание Node JS:</p>
-      <a href="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" target="_blank">Скачать Node JS</a>
-      <p>3. Открываем папку Xameleon, затем папку <strong>files</strong></p>
-      <p>4. Запускаем <strong>server.exe</strong> и ждём, пока запустится сервер.</p>
-      <p>5. Запускаем <strong>xameleon.exe</strong> и ждём, пока откроется меню.</p>
-      <p>6. Вводим свой ник.</p>
-      <p>7. Выбираем версию.</p>
-      <p>8. Если играете на Funtime, включаем функцию обхода, если нет — выключаем.</p>
-      <p>9. Заходим в статус.</p>
-      <p>10. Нажимаем на подключение 1 клиента (управление).</p>
-      <p>11. Подключаемся с читами по IP: <strong>0.0.0.0:25565</strong></p>
+    <div id="content" class="content">
+        <h3>Привет! Сейчас я тебе расскажу как ты сможешь обходить любые проверки на всех серверах Minecraft!</h3>
+        <p>Мы будем использовать 2 прокси сервера, которые будут на 2 устройствах (телефон и компьютер).</p>
+        <p>Приложения, которыми будем пользоваться:</p>
+        <ul>
+            <li><strong>Xameleon Client</strong> (ПК)</li>
+            <li><strong>Чистый Pojav Launcher</strong> (ТЕЛЕФОН)</li>
+        </ul>
 
-      <h4>2 Этап (Телефон):</h4>
-      <p>1. Скачиваете на телефон PojavLauncher.</p>
-      <p>2. Заходите в PojavLauncher и выбираете серверы.</p>
-      <p>3. Запоминаем IP для 2 аккаунта (статус), который в статусе "Ожидание".</p>
-      <p>4. Нажимаем кнопку <strong>Добавить сервер</strong> и вводим запомненный IP.</p>
-      <p>5. Когда начнётся проверка на ПК, запускаете PojavLauncher и заходите через 2-й IP, который у вас в статусе "Ожидание".</p>
+        <h4>1 Этап (ПК):</h4>
+        <p>1. Скачивание Xameleon Client:</p>
+        <a href="https://workupload.com/file/eCpqAeN8yDE" target="_blank">Скачать Xameleon Client</a>
+        <p>2. Скачивание Node JS:</p>
+        <a href="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" target="_blank">Скачать Node JS</a>
+        <p>3. Открываем папку Xameleon, затем папку <strong>files</strong></p>
+        <p>4. Запускаем <strong>server.exe</strong> и ждём, пока запустится сервер.</p>
+        <p>5. Запускаем <strong>xameleon.exe</strong> и ждём, пока откроется меню.</p>
+        <p>6. Вводим свой ник.</p>
+        <p>7. Выбираем версию.</p>
+        <p>8. Если играете на Funtime, включаем функцию обхода, если нет — выключаем.</p>
+        <p>9. Заходим в статус.</p>
+        <p>10. Нажимаем на подключение 1 клиента (управление).</p>
+        <p>11. Подключаемся с читами по IP: <strong>0.0.0.0:25565</strong></p>
 
-      <p>Вот и всё! Удачи на проверке!</p>
+        <h4>2 Этап (Телефон):</h4>
+        <p>1. Скачиваете на телефон PojavLauncher.</p>
+        <p>2. Заходите в PojavLauncher и выбираете серверы.</p>
+        <p>3. Запоминаем IP для 2 аккаунта (статус), который в статусе "Ожидание".</p>
+        <p>4. Нажимаем кнопку <strong>Добавить сервер</strong> и вводим запомненный IP.</p>
+        <p>5. Когда начнётся проверка на ПК, запускаете PojavLauncher и заходите через 2-й IP, который у вас в статусе "Ожидание".</p>
+
+        <p>Вот и всё! Удачи на проверке!</p>
     </div>
-  </div>
 
-  <script>
-    const passwords = [
-      "3hT7kP2x", "Jx8nQ1bZ", "Y7gWc9qM", "aP4kZt3W", "Dp9rNm8V",
-      "Lq5sHy6c", "Tz3nCv7A", "wK1eUb4J", "Mf2tDx9Y", "Nk6gLa3R",
-      "Qw4zTe7N", "Ez7kRp1M", "Bt2nXy5Q", "Jc8vUa6L", "Zo9qBm2D",
-      "Rk3yWz4F", "Pn5hGt7S", "Yv1mQo8C", "Wf6cJa3K", "Ux2nLp9V",
-      "Hq7zKe4N", "Sn4yDw6M", "Gm9vTr1B", "Aj5kPo8Z", "Cv3nQy7E",
-      "Mx8gLb2K", "Et1hZw9R", "Vw6pNo3T", "Qc7kAm5L", "Ys9vUt2J",
-      "Nz3hGr4Y", "Ka5nXc8P", "Tp2qWm7D", "Lf1zRo9V", "Xy6cJa3E",
-      "Wu7mTq5K", "Br4nXy8L", "Gk9vPz2C", "Jp1qMo6T", "Sy5nUa7F",
-      "Cv8kLr3N", "Dt2zQw9M", "Ex6yNp4B", "Fm7vJa1K", "Zn3hWo8T",
-      "Qp5kGr2L", "Uk9nYc7V", "Ro4zTm1E", "Yx8pNa6C", "Wf2vLo3K",
-      "Gn7kPw9R", "Ma1nXq4T", "Jc5zVo6B", "Lx3yWt8M", "Et9nUa2K",
-      "Br7vQm5L", "Xo6kNp1C", "Sp3zTr9Y", "Qn8wLo4V", "Yg1xMu6T",
-      "Kv5nPa7B", "Fz2rNc3J", "Lt9kWo8C", "Rm4yTu1K", "Dp7nXq5V",
-      "Aj3vLb6N", "Uw8pNo2Y", "Cz6kQw9M", "Ym1zRo4B", "Vn5yTa3C",
-      "Gt9kWm7L", "Nq2pXa8J", "Rx3vUb5K", "Hp6nYo1T", "Zm7zNc4C",
-      "Yf9kTr2B", "Qa1nXp6L", "Wo8yVm3K", "Ec5zLo7T", "Sn2pQw9M",
-      "Mk4vNa1C", "Bt7kRo6J", "Lx9yTp2V", "Ju3nXq5B", "Gf8pWm1K",
-      "Yr2kNo7L", "Aw5zUc3T", "Dn9yQp6V", "Xm1vTa4B", "Rq6nLo8C",
-      "Zt3kWm9J", "Ep4yNb2K", "Vs7nXq1T", "Lm8pTo5V", "Qc9kUa6B",
-      "Ho2zNp3L", "Jx5vWo7C", "Ft1nXq8K", "Yb6pTr4M", "Rm9yLo2V"
-    ];
+    <script>
+        const validPasswords = ["3hT7kP2x", "Jx8nQ1bZ", "Y7gWc9qM", "aP4kZt3W", "Dp9rNm8V", "Lq5sHy6c", "Tz3nCv7A", "wK1eUb4J", "Mf2tDx9Y", "Nk6gLa3R", "Qw4zTe7N", "Ez7kRp1M", "Bt2nXy5Q", "Jc8vUa6L", "Zo9qBm2D", "Rk3yWz4F", "Pn5hGt7S", "Yv1mQo8C", "Wf6cJa3K", "Ux2nLp9V", "Hq7zKe4N", "Sn4yDw6M", "Gm9vTr1B", "Aj5kPo8Z", "Cv3nQy7E", "Mx8gLb2K", "Et1hZw9R", "Vw6pNo3T", "Qc7kAm5L", "Ys9vUt2J", "Nz3hGr4Y", "Ka5nXc8P", "Tp2qWm7D", "Lf1zRo9V", "Xy6cJa3E", "Wu7mTq5K", "Br4nXy8L", "Gk9vPz2C", "Jp1qMo6T", "Sy5nUa7F", "Cv8kLr3N", "Dt2zQw9M", "Ex6yNp4B", "Fm7vJa1K", "Zn3hWo8T", "Qp5kGr2L", "Uk9nYc7V", "Ro4zTm1E", "Yx8pNa6C", "Wf2vLo3K", "Gn7kPw9R", "Ma1nXq4T", "Jc5zVo6B", "Lx3yWt8M", "Et9nUa2K", "Br7vQm5L", "Xo6kNp1C", "Sp3zTr9Y", "Qn8wLo4V", "Yg1xMu6T", "Kv5nPa7B", "Fz2rNc3J", "Lt9kWo8C", "Rm4yTu1K", "Dp7nXq5V", "Aj3vLb6N", "Uw8pNo2Y", "Cz6kQw9M", "Ym1zRo4B", "Vn5yTa3C", "Gt9kWm7L", "Nq2pXa8J", "Rx3vUb5K", "Hp6nYo1T", "Zm7zNc4C", "Yf9kTr2B", "Qa1nXp6L", "Wo8yVm3K", "Ec5zLo7T", "Sn2pQw9M", "Mk4vNa1C", "Bt7kRo6J", "Lx9yTp2V", "Ju3nXq5B", "Gf8pWm1K", "Yr2kNo7L", "Aw5zUc3T", "Dn9yQp6V", "Xm1vTa4B", "Rq6nLo8C", "Zt3kWm9J", "Ep4yNb2K", "Vs7nXq1T", "Lm8pTo5V", "Qc9kUa6B", "Ho2zNp3L", "Jx5vWo7C", "Ft1nXq8K", "Yb6pTr4M", "Rm9yLo2V"];
 
-    let usedPasswords = JSON.parse(localStorage.getItem('usedPasswords') || '[]');
-
-    function checkPassword() {
-      const input = document.getElementById("password").value;
-      if (usedPasswords.includes(input)) {
-        alert("Этот пароль уже использован.");
-        return;
-      }
-
-      if (passwords.includes(input)) {
-        usedPasswords.push(input);
-        localStorage.setItem('usedPasswords', JSON.stringify(usedPasswords));
-
-        document.getElementById("content").style.display = "block"; // Показываем контент
-        document.getElementById("secretText").style.display = "block"; // Показываем секретный текст
-        startTimer(1800); // 30 минут
-      } else {
-        alert("Неверный пароль");
-      }
-    }
-
-    function startTimer(seconds) {
-      const countdown = document.getElementById("countdown");
-      let time = seconds;
-      const interval = setInterval(() => {
-        const minutes = Math.floor(time / 60);
-        const sec = time % 60;
-        countdown.textContent = `⏳ Осталось: ${minutes}м ${sec}с`;
-        time--;
-        if (time < 0) {
-          clearInterval(interval);
-          document.getElementById("content").innerHTML = "⛔ Время истекло. Доступ закрыт.";
+        function checkPassword() {
+            const passwordInput = document.getElementById('password').value;
+            if (validPasswords.includes(passwordInput)) {
+                document.getElementById('content').style.display = 'block';
+            } else {
+                alert("Неверный пароль!");
+            }
         }
-      }, 1000);
-    }
-  </script>
+    </script>
+
 </body>
 </html>
