@@ -53,6 +53,7 @@
       background: #0d0d0d;
       color: #00ffcc;
       font-size: 16px;
+      box-sizing: border-box;
     }
     button {
       padding: 12px 24px;
@@ -79,6 +80,10 @@
       }
       textarea {
         height: 150px;
+      }
+      input[type="password"] {
+        width: 90%; /* Сужаем поле ввода на мобильных устройствах */
+        margin: 0 auto; /* Центрируем поле */
       }
     }
   </style>
@@ -122,29 +127,17 @@
 
     function checkPassword() {
       const input = document.getElementById("password").value;
-      const contentDiv = document.getElementById("content");
-      const textarea = document.getElementById("secretText");
-
       if (usedPasswords.includes(input)) {
         alert("Этот пароль уже использован.");
         return;
       }
 
-      const lastPassword = passwords[passwords.length - 1];
-
       if (passwords.includes(input)) {
         usedPasswords.push(input);
         localStorage.setItem('usedPasswords', JSON.stringify(usedPasswords));
 
-        contentDiv.style.display = "block";
-
-        // Проверка на мастер-ключ
-        if (input === lastPassword) {
-          textarea.value = "👑 Master Key Access Granted!\n\nВы получили привилегированный доступ. Используйте с умом.";
-        } else {
-          textarea.value = "Вот ваш защищённый текст. Никому не передавайте.";
-          startTimer(1800); // 30 минут
-        }
+        document.getElementById("content").style.display = "block";
+        startTimer(1800); // 30 минут
       } else {
         alert("Неверный пароль");
       }
